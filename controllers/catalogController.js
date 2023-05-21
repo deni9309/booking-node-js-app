@@ -1,7 +1,14 @@
 const router = require('express').Router();
 
+const { getAll } = require('../services/accommodationService');
+
 router.get('/', (req, res) => {
-    res.render('catalog', { title: 'All Accommodation' });
+    const rooms = getAll();
+
+    res.render('catalog', {
+        title: 'All Accommodation',
+        rooms,
+    });
 }); 
 
 router.get('/:id', (req, res) => {
