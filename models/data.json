@@ -2,7 +2,18 @@
     {
         "id": "1234",
         "name": "Double room - Guest House Ela",
-        "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/square600/281553538.webp?k=bcfccf40f0a8837ef9005777021a52caf18c22a3532f824cca4e7fc64516eee9&o=&s=1",
+        "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1280x900/282654467.jpg?k=a34fe98440901cf0e427f7db15186387f17c93bc94010fd238b170fb7617e572&o=&hp=1",
+        "gallery": [
+            "https://cf.bstatic.com/xdata/images/hotel/max1280x900/281553538.jpg?k=85d38bd33d49cd9ebb7ab61aff039deef770eb75c65e95226d1e5dcbab45f5d1&o=&hp=1",
+            "https://cf.bstatic.com/xdata/images/hotel/max1280x900/281552185.jpg?k=05d8f6ee29b1e8ebe1a2ad2a66c224aa140da7cfee6f3d5ea407d9b617567b37&o=&hp=1"
+        ],
+        "facilities": [
+            "TV",
+            "Free WiFi",
+            "Balcony",
+            "Mini bar",
+            "Room service"
+        ],
         "description": "Enjoying a peaceful location in Bansko, 500 metres from the cable car, Guest House Ela offers a sauna, steam bath and massages. Free WiFi is provided in the entire building.",
         "city": "Bansko",
         "beds": 2,

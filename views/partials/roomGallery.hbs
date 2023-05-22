@@ -1,0 +1,10 @@
+<div class="swiper-wrapper align-items-center">
+    <div class="swiper-slide">
+        <img src="{{room.imageUrl}}" alt="{{room.name}}">
+    </div>
+    {{#each room.gallery}}
+        <div class="swiper-slide">
+            <img src="{{this}}" alt="{{room.name}}">
+        </div>
+    {{/each}}
+</div>

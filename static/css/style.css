@@ -223,7 +223,7 @@ h6 {
 .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
-.navbar li:hover>a {
+.navbar li:hover > a {
   color: #ffc451;
 }
 
@@ -260,11 +260,11 @@ h6 {
 
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover>a {
+.navbar .dropdown ul li:hover > a {
   background-color: #ffc451;
 }
 
-.navbar .dropdown:hover>ul {
+.navbar .dropdown:hover > ul {
   opacity: 1;
   top: 100%;
   visibility: visible;
@@ -276,7 +276,7 @@ h6 {
   visibility: hidden;
 }
 
-.navbar .dropdown .dropdown:hover>ul {
+.navbar .dropdown .dropdown:hover > ul {
   opacity: 1;
   top: 0;
   left: 100%;
@@ -288,7 +288,7 @@ h6 {
     left: -90%;
   }
 
-  .navbar .dropdown .dropdown:hover>ul {
+  .navbar .dropdown .dropdown:hover > ul {
     left: -100%;
   }
 }
@@ -355,7 +355,7 @@ h6 {
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
-.navbar-mobile li:hover>a {
+.navbar-mobile li:hover > a {
   color: #151515;
   background-color: #ffc451;
 }
@@ -392,11 +392,11 @@ h6 {
 
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a {
+.navbar-mobile .dropdown ul li:hover > a {
   background-color: #ffc451;
 }
 
-.navbar-mobile .dropdown>.dropdown-active {
+.navbar-mobile .dropdown > .dropdown-active {
   display: block;
 }
 
@@ -480,6 +480,14 @@ h6 {
 
 #hero .icon-box:hover {
   border-color: #ffc451;
+}
+
+#hero h2 span {
+  font-size: 2.5rem;
+}
+
+#hero h3 {
+  font-size: 1.8rem;
 }
 
 @media (min-width: 1024px) {
@@ -915,7 +923,7 @@ section {
   font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.portfolio-details .portfolio-info ul li + li {
   margin-top: 10px;
 }
 
@@ -1252,16 +1260,19 @@ section {
   margin-top: 40px;
 }
 
-.contact .php-email-form {
+.contact .php-email-form,
+.create-form {
   width: 100%;
   background: #fff;
 }
 
-.contact .php-email-form .form-group {
+.contact .php-email-form .form-group,
+.create-form .form-group {
   padding-bottom: 8px;
 }
 
-.contact .php-email-form .error-message {
+.contact .php-email-form .error-message,
+.create-form .error-message {
   display: none;
   color: #fff;
   background: #ed3c0d;
@@ -1270,11 +1281,13 @@ section {
   font-weight: 600;
 }
 
-.contact .php-email-form .error-message br+br {
+.contact .php-email-form .error-message br + br,
+.create-form .error-message br + br {
   margin-top: 25px;
 }
 
-.contact .php-email-form .sent-message {
+.contact .php-email-form .sent-message,
+.create-form .sent-message {
   display: none;
   color: #fff;
   background: #18d26e;
@@ -1283,14 +1296,16 @@ section {
   font-weight: 600;
 }
 
-.contact .php-email-form .loading {
+.contact .php-email-form .loading,
+ .create-form .loading {
   display: none;
   background: #fff;
   text-align: center;
   padding: 15px;
 }
 
-.contact .php-email-form .loading:before {
+.contact .php-email-form .loading:before,
+.contact .create-form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -1303,7 +1318,9 @@ section {
 }
 
 .contact .php-email-form input,
-.contact .php-email-form textarea {
+.contact .php-email-form textarea,
+.create-form input,
+.create-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
@@ -1311,19 +1328,24 @@ section {
 }
 
 .contact .php-email-form input:focus,
-.contact .php-email-form textarea:focus {
+.contact .php-email-form textarea:focus,
+.create-form input:focus,
+.create-form textarea:focus {
   border-color: #ffc451;
 }
 
-.contact .php-email-form input {
+.contact .php-email-form input,
+.create-form input {
   height: 44px;
 }
 
-.contact .php-email-form textarea {
+.contact .php-email-form textarea,
+.create-form textarea {
   padding: 10px 12px;
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button[type=submit],
+.create-form button[type=submit] {
   background: #ffc451;
   border: 0;
   padding: 10px 24px;
@@ -1332,7 +1354,8 @@ section {
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button[type=submit]:hover,
+.create-form button[type=submit]:hover {
   background: #ffcd6b;
 }
 
@@ -1369,11 +1392,11 @@ section {
   margin: 0;
 }
 
-.breadcrumbs ol li+li {
+.breadcrumbs ol li + li {
   padding-left: 10px;
 }
 
-.breadcrumbs ol li+li::before {
+.breadcrumbs ol li + li::before {
   display: inline-block;
   padding-right: 10px;
   color: #2f2f2f;
