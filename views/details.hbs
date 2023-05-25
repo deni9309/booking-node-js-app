@@ -15,11 +15,15 @@
                 <div class="portfolio-info">
                     <h3>Room facilities</h3>
                     <ul>
-                        {{#each room.facilities}}
+                        {{#each roomFacilities}}
                             <li><i class="bx bx-check-circle me-2 text-success"></i> {{this}}</li>
                         {{/each}}
                     </ul>
                 </div>
+<div class="testimonials">
+ <div class="testimonial-item"> <span class="label">Price per Night: <strong class="text-info price"> {{room.price}} €</strong></span>
+</div></div>
+
                 <div class="portfolio-description">
                     <h2>Here you will find</h2>
                     <p>

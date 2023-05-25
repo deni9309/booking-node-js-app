@@ -516,7 +516,7 @@ h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 60px 0;
+  padding: 40px 0;
   overflow: hidden;
 }
 
@@ -525,8 +525,8 @@ section {
 }
 
 .section-title h2 {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
   padding: 0;
   line-height: 1px;
   margin: 0 0 5px 0;
@@ -541,7 +541,7 @@ section {
   width: 120px;
   height: 1px;
   display: inline-block;
-  background: #ffde9e;
+  background: #ffcd6a;
   margin: 4px 10px;
 }
 
@@ -553,6 +553,16 @@ section {
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
   color: #151515;
+}
+
+.section-no-content {
+  font-size: 32px;
+}
+
+@media screen and (max-width: 991px) {
+  section div.section-title {
+    padding-bottom: 10px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -832,6 +842,18 @@ section {
   padding: 20px;
 }
 
+.title {
+  text-align: center;
+  font-size: 22px;
+  color: #ffc451;
+  padding: 20px;
+  background-color: #444444;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
+  transition: all ease-in-out 0.3s;
+}
+
 .portfolio .portfolio-wrap .portfolio-info h4 {
   font-size: 20px;
   color: #fff;
@@ -874,6 +896,11 @@ section {
 
 .portfolio .portfolio-wrap:hover .portfolio-info {
   opacity: 1;
+}
+
+.portfolio-item:hover .title {
+  background-color: #ddd;
+  color: #444444;
 }
 
 /*--------------------------------------------------------------
@@ -1027,11 +1054,26 @@ section {
 # Testimonials
 --------------------------------------------------------------*/
 .testimonials {
-  padding: 80px 0;
-  background: url("../img/testimonials-bg.jpg") no-repeat;
-  background-position: center center;
-  background-size: cover;
+  padding: 40px 0;
+  background: url("../img/portfolio/abstract-blue-and-white-geometric-background-free-vector.jpg") no-repeat;
+  background-position: center;
+
   position: relative;
+  background-attachment: fixed;
+  background-blend-mode: soft-light;
+  background-color: rgba(213, 213, 213, 0.73);
+}
+
+
+.testimonials-background {
+    padding: 20px 0;
+      background: url("../img/portfolio/abstract-blue-and-white-geometric-background-free-vector.jpg") no-repeat;
+      background-position: center;
+    
+      position: relative;
+      background-attachment: fixed;
+      background-blend-mode: soft-light;
+      background-color: rgba(213, 213, 213, 0.73);
 }
 
 .testimonials::before {
@@ -1041,7 +1083,6 @@ section {
   right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
 }
 
 .testimonials .section-header {
@@ -1072,10 +1113,18 @@ section {
   color: #fff;
 }
 
-.testimonials .testimonial-item h4 {
-  font-size: 14px;
-  color: #ddd;
+.testimonials .testimonial-item .label,
+.testimonials .testimonial-item .price {
+  color: #444;
   margin: 0 0 15px 0;
+}
+
+.testimonials .testimonial-item .price {
+  font-size: 28px;
+}
+
+.testimonials .testimonial-item .label {
+  font-size: 20px;
 }
 
 .testimonials .testimonial-item .quote-icon-left,
@@ -1219,7 +1268,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Contact
+#Search #Contact #Form Error
 --------------------------------------------------------------*/
 .contact .info {
   width: 100%;
@@ -1261,7 +1310,8 @@ section {
 }
 
 .contact .php-email-form,
-.create-form {
+.create-form,
+.search-form {
   width: 100%;
   background: #fff;
 }
@@ -1273,12 +1323,22 @@ section {
 
 .contact .php-email-form .error-message,
 .create-form .error-message {
-  display: none;
   color: #fff;
-  background: #ed3c0d;
+  background: #dd1e0dda;
   text-align: left;
-  padding: 15px;
-  font-weight: 600;
+  padding: 2px 10px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.contact .php-email-form .error-message:first-of-type,
+.create-form .error-message:first-of-type {
+  padding-top: 10px;
+}
+
+.contact .php-email-form .error-message:last-of-type,
+.create-form .error-message:last-of-type {
+  padding-bottom: 10px;
 }
 
 .contact .php-email-form .error-message br + br,
@@ -1297,7 +1357,7 @@ section {
 }
 
 .contact .php-email-form .loading,
- .create-form .loading {
+.create-form .loading {
   display: none;
   background: #fff;
   text-align: center;
@@ -1320,17 +1380,29 @@ section {
 .contact .php-email-form input,
 .contact .php-email-form textarea,
 .create-form input,
-.create-form textarea {
+.create-form textarea,
+.search-form input {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
   border-radius: 4px;
 }
 
+.search-form input[type=number] {
+  margin: 0 5px;
+}
+
+.search-form input[type=text] {
+  min-width: 200px;
+
+  margin: 0 5px;
+}
+
 .contact .php-email-form input:focus,
 .contact .php-email-form textarea:focus,
 .create-form input:focus,
-.create-form textarea:focus {
+.create-form textarea:focus,
+.search-form input:focus {
   border-color: #ffc451;
 }
 
@@ -1339,13 +1411,15 @@ section {
   height: 44px;
 }
 
+
 .contact .php-email-form textarea,
 .create-form textarea {
   padding: 10px 12px;
 }
 
 .contact .php-email-form button[type=submit],
-.create-form button[type=submit] {
+.create-form button[type=submit],
+.search-form input[type=submit] {
   background: #ffc451;
   border: 0;
   padding: 10px 24px;
@@ -1354,8 +1428,12 @@ section {
   border-radius: 4px;
 }
 
+
+
+
 .contact .php-email-form button[type=submit]:hover,
-.create-form button[type=submit]:hover {
+.create-form button[type=submit]:hover,
+.search-form input[type=submit]:hover {
   background: #ffcd6b;
 }
 
@@ -1422,7 +1500,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Footer
+# Footer  #Search Form
 --------------------------------------------------------------*/
 #footer {
   background: black;

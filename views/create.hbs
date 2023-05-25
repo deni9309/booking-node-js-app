@@ -1,55 +1,79 @@
 <!-- ======= Create Section ======= -->
 <section id="contact" class="contact">
     <div class="container" data-aos="fade-up">
-
         <div class="section-title">
             <h2>Create</h2>
             <p>New Accommodation</p>
         </div>
+        <div class="row mt-1">
+            <div class="col-lg-10 col-sm-auto mt-2 mt-lg-0 m-auto d-flex">
+                <form action="/create" method="post" class="create-form">
+                    <div class="my-3">
+                        {{#if error}}
+                            {{#each error}}
+                                <div class="error-message">{{this}}</div>
+                            {{/each}}
+                        {{/if}}
+                    </div>
 
-        <div class="row mt-5">
-            <div class="col-lg-10 mt-2 mt-lg-0 m-auto">
-
-                <form action="/create" method="post" role="form" class="create-form">
-                    <div class="row">
-                        <div class="col-md-6 form-group">
+                    <div class="row mt-3 mb-3 form-group">
+                        <div class="input-group mb-1">
+                            <label class="input-group-text col-md-2 col-lg-2 col-sm-auto" for="name">Name</label>
                             <input type="text" name="name" class="form-control" id="name"
-                                placeholder="Accommodation Name" required>
+                                placeholder="Accommodation Name" required />
                         </div>
-                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <div class="input-group mt-1">
+                            <label class="input-group-text col-md-2 col-lg-2 col-sm-auto" for="city">Location</label>
                             <input type="text" class="form-control" name="city" id="city"
-                                placeholder="City / Location / Address" required>
+                                placeholder="Accommodation address" required>
                         </div>
                     </div>
-                    <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="imageUrl" id="imageUrl"
-                            placeholder="Cover Image Url" required>
+
+                    <div class="row mt-3 mb-3 form-group">
+                        <div class="input-group w-50">
+                            <label class="input-group-text" for="price">Price</label>
+                            <input type="number" name="price" class="form-control" id="price" min="0"
+                                title="Price per Night" step="0.10" required />
+                        </div>
+                        <div class="input-group w-50">
+                            <label class="input-group-text" for="beds">Beds</label>
+                            <input type="number" class="form-control" name="beds" id="beds" title="Number of beds"
+                                min="1" max="5" required />
+                        </div>
                     </div>
-                    <div class="form-group mt-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="gallery" id="gallery1"
-                                placeholder="First Gallery Image Url" title="This field is optional" />
-                            <input type="text" class="form-control" name="gallery" id="gallery2"
+
+                    <div class="row mt-3 mb-3">
+                        <div class="form-group">
+                            <input type="text" class="form-control mb-2" name="imageUrl" id="imageUrl"
+                                placeholder="Cover Image Url" required />
+                            <input type="text" class="form-control mt-2" name="gallery" id="gallery"
+                                placeholder="Second Image Url" required />
+                            {{!-- <div class="input-group">
+                            <input type="text" class="form-control" name="gallery2" id="gallery2"
                                 placeholder="Second Gallery Image Url" title="This field is optional" />
-                            <input type="text" class="form-control" name="gallery" id="gallery3"
+                            <input type="text" class="form-control" name="gallery3" id="gallery3"
                                 placeholder="Third Gallery Image Url" title="This field is optional" />
+                                  </div> --}}
                         </div>
                     </div>
+
+                    <div class="row mt-3 mb-3 form-group">
+                        <div class="input-group w-100">
+                            <label class="input-group-text col-md-2 col-lg-2 col-sm-auto"
+                                for="facilities">Facilities</label>
+                            <input type="text" name="facilities" class="form-control" id="facilities"
+                                placeholder="Separate them with comma..." required>
+                        </div>
+                    </div>
+
                     <div class="form-group mt-3">
                         <textarea class="form-control" name="description" rows="6"
                             placeholder="Add an attractive description to your place..." required></textarea>
                     </div>
-                    <div class="my-3">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">New accommodation has been added. Thank you!</div>
-                    </div>
+
                     <div class="text-center"><button type="submit">Save</button></div>
                 </form>
-
             </div>
-
         </div>
-
     </div>
 </section>

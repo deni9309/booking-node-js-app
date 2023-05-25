@@ -7,12 +7,43 @@
             <p>All Accommodation</p>
         </div>
 
+        <div class="row mt-3 mb-3">
+            <form method="get" class="mb-3 search-form">
+                <div class="testimonials-background">
+                    <h5 class="text-center p-2 mb-0 bg-dark bg-opacity-25">Filter results</h5>
+                    <div class="justify-content-center flex-wrap d-flex">
+                        <label for="city" class=" input-group-text">Location
+                            <input type="text" id="city" name="city" value="{{city}}" class="form-control">
+                        </label>
+                        <label for="search" class="input-group-text">Terms
+                            <input type="text" id="search" name="search" value="{{search}}" class="form-control">
+                        </label>
+
+
+                        <label for="fromPrice" class="input-group-text">From Price
+                            <input type="number" step="10" width="10" id="fromPrice" min="20" max="1000" value="{{fromPrice}}"
+                                name="fromPrice" class="form-control">
+                        </label>
+                        <label for="toPrice" class="input-group-text">To Price
+                            <input type="number" step="10" width="10" id="toPrice" min="20" max="1000" value="{{toPrice}}"
+                                name="toPrice" class="form-control">
+                        </label>
+                        <input type="submit" value="Search">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-            {{#each rooms}}
-                {{> roomCard}}
-            {{/each}}
-
+            {{#if rooms}}
+                {{#each rooms}}
+                    {{> roomCard}}
+                {{/each}}
+            {{else}}
+                <h3 class="text-black-50 section-no-content text-center"><i class="bx bx-sad bx me-2"></i>There are not
+                    any rentals yet.</h3>
+            {{/if}}
         </div>
 
     </div>
