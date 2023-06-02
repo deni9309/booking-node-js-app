@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { create } = require('../services/accommodationService');
+const { create } = require('../services/roomService');
 
 router.get('/', (req, res) => {  // path is defined in index.js
     res.render('create', {
@@ -10,12 +10,9 @@ router.get('/', (req, res) => {  // path is defined in index.js
 
 router.post('/', async (req, res) => {
     try {
-        //simulate error
-        //throw new Error('There was an error while processing the request!');
-
         const result = await create(req.body);
 
-        res.redirect('/catalog/' + result.id);
+        res.redirect('/catalog/' + result._id);
     } catch (err) {
         res.render('create', {
             error: err.message.split('\n')
