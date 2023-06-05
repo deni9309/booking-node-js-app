@@ -1,0 +1,35 @@
+<!-- ======= Create Section ======= -->
+<section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h2>Create</h2>
+            <p>New Facility</p>
+        </div>
+        <div class="row mt-1">
+            <div class="col-lg-10 col-sm-auto mt-2 mt-lg-0 m-auto d-flex">
+                <form action="/facility/create" method="post" class="create-form">
+                    <!--  <div class="my-3">
+                        {{#if error}}
+                            {{#each error}}
+                                <div class="error-message">{{this}}</div>
+                            {{/each}}
+                        {{/if}}
+                    </div> -->
+                    <div class="row mt-3 mb-3 form-group">
+                        <div class="input-group mb-1">
+                            <label class="input-group-text col-md-2 col-lg-2 col-sm-auto" for="label">Label</label>
+                            <input type="text" name="label" class="form-control" id="label" placeholder="Facility Label"
+                                required />
+                        </div>
+                        <div class="input-group mt-1">
+                            <label class="input-group-text col-md-2 col-lg-2 col-sm-auto" for="iconUrl">Icon Url</label>
+                            <input type="text" class="form-control" name="iconUrl" id="iconUrl"
+                                placeholder="Icon Url (optional)">
+                        </div>
+                    </div>
+                    <div class="text-center"><button type="submit">Save</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

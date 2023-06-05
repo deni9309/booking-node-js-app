@@ -48,23 +48,23 @@
                                 placeholder="Cover Image Url" required />
                             <input type="text" class="form-control mt-2" name="gallery" id="gallery"
                                 placeholder="Second Image Url" required />
-                            {{!-- <div class="input-group">
-                            <input type="text" class="form-control" name="gallery2" id="gallery2"
-                                placeholder="Second Gallery Image Url" title="This field is optional" />
-                            <input type="text" class="form-control" name="gallery3" id="gallery3"
-                                placeholder="Third Gallery Image Url" title="This field is optional" />
-                                  </div> --}}
                         </div>
                     </div>
 
-                    <div class="row mt-3 mb-3 form-group">
-                        <div class="input-group w-100">
-                            <label class="input-group-text col-md-2 col-lg-2 col-sm-auto"
-                                for="facilities">Facilities</label>
-                            <input type="text" name="facilities" class="form-control" id="facilities"
-                                placeholder="Separate them with comma..." required>
-                        </div>
-                    </div>
+
+
+                <fieldset name="facilities"
+                    class="mt-3 mb-3 d-flex align-items-stretch justify-content-center flex-wrap input-group-text">
+                    {{#each facilities}}
+                        <label
+                            class="w-25 border border-1 border-dark-subtle pt-3 pb-0 justify-content-around align-items-center d-flex flex-wrap flex-column">
+                            <img width="28" src={{iconUrl}}>
+                            <span class="d-flex text-black-50 text-wrap">{{label}}</span>
+                            <input type="checkbox" name="facilities" class="d-flex flex-wrap flex-column  p-0" value="{{_id}}">
+                        </label>
+                    {{/each}}
+                </fieldset>
+
 
                     <div class="form-group mt-3">
                         <textarea class="form-control" name="description" rows="6"

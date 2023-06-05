@@ -138,7 +138,7 @@ h6 {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-family:fantasy;
+  font-family: fantasy;
 }
 
 #header .logo a {
@@ -406,7 +406,7 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: url("../img/hero-bg.jpg") top center;
   background-size: cover;
   position: relative;
@@ -424,7 +424,7 @@ h6 {
 
 #hero .container {
   position: relative;
-  padding-top: 74px;
+  padding-top: 58px;
   text-align: center;
 }
 
@@ -443,7 +443,7 @@ h6 {
 
 #hero h2 {
   color: rgba(255, 255, 255, 0.9);
-  margin: 10px 0 0 0;
+  margin: 40px 0 0 0;
   font-size: 24px;
 }
 
@@ -489,6 +489,7 @@ h6 {
 
 #hero h3 {
   font-size: 1.8rem;
+  margin: 10px auto;
 }
 
 @media (min-width: 1024px) {
@@ -503,7 +504,7 @@ h6 {
   }
 
   #hero h1 {
-    font-size: 28px;
+    font-size: 32px;
     line-height: 36px;
   }
 
@@ -549,11 +550,11 @@ section {
 .section-title p {
   margin: 0;
   margin: 0;
-  font-size: 36px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 600;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
-  color: #151515;
+  color: #363636;
 }
 
 .section-no-content {
@@ -1067,14 +1068,14 @@ section {
 
 
 .testimonials-background {
-    padding: 20px 0;
-      background: url("../img/portfolio/abstract-blue-and-white-geometric-background-free-vector.jpg") no-repeat;
-      background-position: center;
-    
-      position: relative;
-      background-attachment: fixed;
-      background-blend-mode: soft-light;
-      background-color: rgba(213, 213, 213, 0.73);
+  padding: 20px 0;
+  background: url("../img/portfolio/abstract-blue-and-white-geometric-background-free-vector.jpg") no-repeat;
+  background-position: center;
+
+  position: relative;
+  background-attachment: fixed;
+  background-blend-mode: soft-light;
+  background-color: rgba(213, 213, 213, 0.73);
 }
 
 .testimonials::before {
@@ -1429,13 +1430,12 @@ section {
   border-radius: 4px;
 }
 
-
-
-
 .contact .php-email-form button[type=submit]:hover,
 .create-form button[type=submit]:hover,
-.search-form input[type=submit]:hover {
-  background: #ffcd6b;
+.search-form input[type=submit]:hover,
+.btn-outline-warning:hover {
+  background: #ffd98e;
+  transition: 0.4s;
 }
 
 @keyframes animate-loading {

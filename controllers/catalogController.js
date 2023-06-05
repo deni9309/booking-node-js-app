@@ -25,12 +25,12 @@ router.get('/:id', async (req, res) => {
     const room = await getById(roomId);
 
     if (room) {
-        const roomFacilities = Array.from(room.facilities.split(',' || ', '));
+      //  const roomFacilities = Array.from(room.facilities.split(',' || ', '));
 
         res.render('details', {
             title: 'Accommodation Details',
-            room,
-            roomFacilities
+            room
+          //  roomFacilities
         });
     } else {
         res.render('roomNotFound', {

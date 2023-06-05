@@ -1,0 +1,51 @@
+<!-- ======= Decorate Section ======= -->
+<section id="portfolio-details" class="portfolio-details" data-aos="fade-up">
+    <div class="container">
+        <div class="section-title">
+            <h2>Decorate with facilities</h2>
+            <p>{{room.name}}</p>
+        </div>
+        <div class="row d-flex align-items-around justify-content-center bg-light">
+
+            <div class="col-lg-7 pt-3 m-auto">
+
+                <div class="portfolio-details-slider swiper-3d swiper">
+                    {{> roomGallery }}
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+            <div class="col-lg-5  pt-3 m-auto">
+
+                <form method="post" class="create-form d-flex flex-column">
+                    <div class="portfolio-info pt-4">
+                        <h3>Available facilities</h3>
+
+                        <fieldset name="facilities"
+                            class="m-0 d-flex align-items-stretch justify-content-center flex-wrap input-group">
+                            {{#each facilities}}
+                                <label
+                                    class="w-50 border border-1 border-dark-subtle pt-3 pb-0 justify-content-around align-items-center d-flex flex-wrap flex-column">
+                                    <img width="28" src={{iconUrl}}>
+                                    <span class="d-flex text-black-50 text-wrap">{{label}}</span>
+                                    <input type="checkbox" name="facilities" class="d-flex flex-wrap flex-column  p-0"
+                                        value="{{_id}}">
+                                </label>
+                            {{/each}}
+                        </fieldset>
+                        <div class="d-flex mt-3 btn-group flex-wrap justify-content-center">
+                            <button type="submit" class="col-2 btn btn-warning p-2 text-dark">
+                                Save
+                            </button>
+                            <a href="/catalog/{{room._id}}" class="col-2 p-2 btn btn-outline-warning text-dark">
+                                Back To Details
+                            </a>
+                        </div>
+                    </div>
+                    
+                </form>
+
+            </div>
+
+        </div>
+</section><!-- End Decorate Section -->
