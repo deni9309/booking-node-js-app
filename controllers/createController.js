@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const { create } = require('../services/roomService');
-const { getAllFacilities, attachRoomToFacilities } = require('../services/facilityService');
+const { getAllFacilities, updateRoomFacilityRelation } = require('../services/facilityService');
 
 router.get('/', async (req, res) => {  // path is defined in index.js
     const facilities = await getAllFacilities();
@@ -14,11 +14,13 @@ router.get('/', async (req, res) => {  // path is defined in index.js
 
 router.post('/', async (req, res) => {
     try {
-        const result = await create(req.body);
+        const { facilities, ...roomData } = req.body;
+
+        const result = await create(roomData);
 
         try {
-            if (result.facilities.length > 0) {
-                await attachRoomToFacilities(result.facilities, result._id);
+            if (facilities.length > 0) {
+                await updateRoomFacilityRelation(facilities, result._id);
             }
 
             res.redirect('/catalog/' + result._id);

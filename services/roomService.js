@@ -16,7 +16,7 @@ async function create(roomData) {
         beds: Number(roomData.beds),
         imageUrl: roomData.imageUrl,
         gallery: roomData.gallery,
-        facilities: roomData.facilities,
+        facilities: [],
         description: roomData.description
     };
 
