@@ -1,8 +1,11 @@
 const router = require('express').Router();
 
-const { getAll, getById } = require('../services/roomService');
+const { getAll, getByIdWithFacilities } = require('../services/roomService');
 
 router.get('/', async (req, res) => {
+    const user = req.user;
+    console.log(user);
+
     const search = req.query.search || '';
     const city = req.query.city || '';
     const fromPrice = Number(req.query.fromPrice) || 20;
@@ -22,15 +25,16 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const roomId = req.params.id;
-    const room = await getById(roomId);
+    const room = await getByIdWithFacilities(roomId);
 
     if (room) {
-      //  const roomFacilities = Array.from(room.facilities.split(',' || ', '));
-
+        //  const roomFacilities = Array.from(room.facilities.split(',' || ', '));
+        //   const hasFacilities = room.facilities?.length > 0;
         res.render('details', {
             title: 'Accommodation Details',
+            // hasFacilities,
             room
-          //  roomFacilities
+            //  roomFacilities
         });
     } else {
         res.render('roomNotFound', {

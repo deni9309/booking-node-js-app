@@ -8,6 +8,10 @@ function getById(id) {
     return Room.findById(id).lean();
 }
 
+function getByIdWithFacilities(id) {
+    return Room.findById(id).populate('facilities', 'label iconUrl').lean();
+}
+
 async function create(roomData) {
     const room = {
         name: roomData.name,
@@ -16,7 +20,7 @@ async function create(roomData) {
         beds: Number(roomData.beds),
         imageUrl: roomData.imageUrl,
         gallery: roomData.gallery,
-        facilities: [],
+        // facilities: [],
         description: roomData.description
     };
 
@@ -32,6 +36,7 @@ async function create(roomData) {
 module.exports = {
     getAll,
     getById,
+    getByIdWithFacilities,
     create,
 };
 

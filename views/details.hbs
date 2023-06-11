@@ -15,14 +15,18 @@
             </div>
 
             <div class="col-lg-4">
-                <div class="portfolio-info">
-                    <h3>Room facilities</h3>
-                    <!-- <ul>
-                        {{#each room.facilities}}
-                            <li><i class="bx bx-check-circle me-2 text-success"></i> {{label}} {{iconUrl}}</li>
-                        {{/each}} 
-                       
-                    </ul> -->
+                <div class="portfolio-info">                  
+                        <h3>Room facilities</h3>
+                        <ul class="d-flex justify-content-center align-items-end flex-wrap gap-1">
+                            {{#each room.facilities}}
+                                <li class="d-flex flex-column justify-content-around align-items-center 
+                                    p-2 border-bottom border-2 border-success">
+                                    <img width="28" src={{iconUrl}}>
+                                    {{label}}
+                                </li>
+                            {{/each}}
+                        </ul>               
+
                     <div class="testimonials">
                         <div class="testimonial-item">
                             <span class="label">Price per Night: <strong class="text-info price">
@@ -30,7 +34,7 @@
                         </div>
                     </div>
 
-                    <h3 class="mt-4">Here you will find</h3>
+                    <h3 class="mt-4">Accommodation Overview</h3>
                     <div class="portfolio-description">
                         <p>
                             {{room.description}}

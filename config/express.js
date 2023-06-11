@@ -1,7 +1,11 @@
 const express = require('express');
 const hbs = require('express-handlebars').create({ extname: 'hbs' });
+const cookieParser = require('cookie-parser');
 
 const defaultTitle = require('../middlewares/defaultTitle');
+const auth = require('../middlewares/auth');
+
+const SECRET = 'xc7MNB709tjfi7t7gug85A5%3evvhcj#.#fbshd.DA99';
 
 module.exports = (app) => {
     app.engine('hbs', hbs.engine);
@@ -9,6 +13,8 @@ module.exports = (app) => {
 
     app.use(express.urlencoded({ extended: false }));  // body parser middleware
     app.use('/static', express.static('static'));
+    app.use(cookieParser()); // cookie-parser must be before auth (auth uses it)
+    app.use(auth(SECRET));
 
     app.use(defaultTitle('BooKing'));
 };

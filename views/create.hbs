@@ -51,19 +51,6 @@
                         </div>
                     </div>
 
-
-
-                <fieldset class="m-0 d-flex align-items-stretch justify-content-center flex-wrap input-group">
-                    {{#each facilities}}
-                        <label
-                            class="w-50 border border-1 border-dark-subtle pt-3 pb-0 justify-content-around align-items-center d-flex flex-wrap flex-column">
-                            <img width="28" src={{iconUrl}}>
-                            <span class="d-flex text-black-50 text-wrap">{{label}}</span>
-                            <input type="checkbox" name="facilities" value="{{_id}}" class="d-flex flex-wrap flex-column  p-0">
-                        </label>
-                    {{/each}}
-                </fieldset>
-
                     <div class="form-group mt-3">
                         <textarea class="form-control" name="description" rows="6"
                             placeholder="Add an attractive description to your place..." required></textarea>
