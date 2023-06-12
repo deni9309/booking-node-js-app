@@ -4,7 +4,10 @@ const connString = process.env.DATABASE_CONNECTION_STRING || 'mongodb://127.0.0.
 
 module.exports = async (app) => {
     try {
-        await mongoose.connect(connString);
+        await mongoose.connect(connString, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
 
         console.log('Database connected successfully.');
     } catch (err) {

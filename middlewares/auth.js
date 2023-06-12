@@ -8,8 +8,8 @@ module.exports = (secret) => (req, res, next) => {
             req.user = data;
             
         } catch (err) {
-            res.cookie('jwt', '', { maxAge: 0 });   //res.clearCookie('jwt');
-
+            res.clearCookie('jwt'); //res.cookie('jwt', '', { maxAge: 0 });
+            
             return res.redirect('/login');
         }
     }
