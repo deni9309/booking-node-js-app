@@ -24,22 +24,28 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+    let isOwner = false;
     const roomId = req.params.id;
     const room = await getByIdWithFacilities(roomId);
 
     if (room) {
-        //  const roomFacilities = Array.from(room.facilities.split(',' || ', '));
-        //   const hasFacilities = room.facilities?.length > 0;
+        // const roomFacilities = Array.from(room.facilities.split(',' || ', '));
+        // const hasFacilities = room.facilities?.length > 0;
+        if (req.user && room.owner == req.user._id) {
+            isOwner = true;
+        }
+
         res.render('details', {
             title: 'Accommodation Details',
+            room,
             // hasFacilities,
-            room
-            //  roomFacilities
+            // roomFacilities,
+            isOwner,
         });
     } else {
         res.render('roomNotFound', {
             title: 'Accommodation Details',
-            roomId
+            roomId,
         });
     }
 });

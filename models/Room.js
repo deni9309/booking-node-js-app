@@ -9,6 +9,7 @@ const roomSchema = new Schema({
     gallery: { type: String },
     facilities: { type: [Types.ObjectId], default: [], ref: 'Facility' },
     description: { type: String, required: true },
+    owner: { type: Types.ObjectId, ref: 'User', required: true }
 });
 
 const Room = model('Room', roomSchema);

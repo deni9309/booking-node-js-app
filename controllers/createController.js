@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {  // path is defined in index.js
 router.post('/', async (req, res) => {
     try {
         const roomData = req.body;
-        const result = await create(roomData);
+        const result = await create(roomData, req.user._id);
     
         res.redirect('/catalog/' + result._id);
     } catch (err) {

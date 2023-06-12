@@ -50,12 +50,13 @@
               <li><a class="nav-link" href="/create">Create Accommodation</a></li>
               <li><a class="nav-link" href="/facility/create">Create Facility</a></li>
               <li><a class="nav-link" href="/auth/logout">Logout</a></li>
+
+              <li class=""><a disabled class="nav-link border-bottom border-info-subtle ms-lg-5 ps-lg-0">Hi,
+                  {{username}}</a></li>
             {{else}}
               <li><a class="nav-link" href="/auth/login">Login</a></li>
               <li><a class="nav-link" href="/auth/register">Register</a></li>
             {{/if}}
-
-
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
