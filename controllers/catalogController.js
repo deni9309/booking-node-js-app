@@ -3,24 +3,25 @@ const router = require('express').Router();
 const { getAll, getByIdWithFacilities } = require('../services/roomService');
 
 router.get('/', async (req, res) => {
-    const user = req.user;
-    console.log(user);
-
     const search = req.query.search || '';
     const city = req.query.city || '';
     const fromPrice = Number(req.query.fromPrice) || 20;
     const toPrice = Number(req.query.toPrice) || 1000;
+    try {
+        const rooms = await getAll(search, city, fromPrice, toPrice);
 
-    const rooms = await getAll(search, city, fromPrice, toPrice);
-
-    res.render('catalog', {
-        title: 'All Accommodation',
-        rooms,
-        search,
-        city,
-        fromPrice,
-        toPrice
-    });
+        res.render('catalog', {
+            title: 'All Accommodation',
+            rooms,
+            search,
+            city,
+            fromPrice,
+            toPrice
+        });
+    } catch (err) {
+        console.log(err.message);
+        res.redirect(404, '/404');
+    }
 });
 
 router.get('/:id', async (req, res) => {

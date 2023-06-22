@@ -17,7 +17,7 @@ router.post('/login', async (req, res) => {
 
         res.redirect('/');
     } catch (err) {
-        console.error(err);
+        console.log(err.message);
         res.render('login', {
             title: 'Login',
             error: err.message.split('\n')
@@ -43,7 +43,7 @@ router.post('/register', async (req, res) => {
 
         res.redirect('/');
     } catch (err) {
-        console.error(err);
+        console.log(err.message);
         res.render('register', {
             title: 'Register',
             error: err.message.split('\n')

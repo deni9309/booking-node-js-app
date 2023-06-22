@@ -19,6 +19,7 @@ router.post('/create', async (req, res) => {
 
         res.redirect('/catalog');
     } catch (err) {
+        console.log(err.message);
         res.render('createFacility', {
             title: 'Create New Facility',
             error: err.message.split('\n'),
@@ -30,15 +31,20 @@ router.get('/:roomId/decorate-room', async (req, res) => {
     const roomId = req.params.roomId;
     const room = await getById(roomId);
 
-    const allFacilities = await getAllFacilities();
+    try {
+        const allFacilities = await getAllFacilities();
 
-    const facilities = getCheckedFacilitiesForRoomViewData(room.facilities, allFacilities);
+        const facilities = getCheckedFacilitiesForRoomViewData(room.facilities, allFacilities);
    
-    res.render('decorateRoom', {
-        title: 'Decorate Room',
-        facilities,
-        room
-    });
+        res.render('decorateRoom', {
+            title: 'Decorate Room',
+            facilities,
+            room
+        });
+    } catch (err) {
+        console.log(err.message);
+        res.redirect(404, '/404');
+    }
 });
 
 router.post('/:roomId/decorate-room', async (req, res) => {
@@ -50,7 +56,7 @@ router.post('/:roomId/decorate-room', async (req, res) => {
 
         res.redirect('/catalog/' + roomId);
     } catch (err) {
-        console.error(err);
+        console.log(err.message);
         res.redirect('/404');
     }
 });

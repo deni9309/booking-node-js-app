@@ -33,11 +33,33 @@ async function create(roomData, ownerId) {
     return result;
 }
 
+async function update(roomId, roomData) {
+    const missingFields = Object.entries(roomData).filter(([k, v]) => !v);
+    if (missingFields.length > 0) {
+        throw new Error(missingFields.map(kv => `${kv[0]} is required!`).join('\n'));
+    }
+
+    const room = await Room.findById(roomId);
+
+    room.name = roomData.name;
+    room.city = roomData.city;
+    room.price = Number(roomData.price);
+    room.beds = Number(roomData.beds);
+    room.imageUrl = roomData.imageUrl;
+    room.gallery = roomData.gallery;
+    room.description = roomData.description;
+
+    await room.save();
+
+    return room;
+}
+
 module.exports = {
     getAll,
     getById,
     getByIdWithFacilities,
     create,
+    update,
 };
 
 /*function generateId() {
