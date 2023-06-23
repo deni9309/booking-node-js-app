@@ -1,0 +1,62 @@
+<!-- ======= Create Section ======= -->
+<section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h2>Delete</h2>
+            <p>Accommodation</p>
+        </div>
+        <div class="row mt-1">
+            <div class="col-lg-10 col-sm-auto mt-2 mt-lg-0 m-auto d-flex">
+                <form name="submitForm" method="post" class="create-form">
+            
+                    <div class="my-3">
+                        {{#if error}}
+                            {{#each error}}
+                                <div class="error-message">{{this}}</div>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+
+                    <div class="row mt-3 mb-3 form-group">
+                        <div class="input-group mb-1">
+                            <label class="input-group-text col-md-2 col-lg-2 col-sm-auto" for="name">Name</label>
+                            <input type="text" name="name" class="form-control" id="name" value="{{room.name}}" disabled />
+                        </div>
+                        <div class="input-group mt-1">
+                            <label class="input-group-text col-md-2 col-lg-2 col-sm-auto" for="city">Location</label>
+                            <input type="text" class="form-control" name="city" id="city" value="{{room.city}}" disabled />
+                        </div>
+                    </div>
+
+                    <div class="row mt-3 mb-3 form-group">
+                        <div class="input-group w-50">
+                            <label class="input-group-text" for="price">Price</label>
+                            <input type="number" name="price" class="form-control" id="price" min="0"
+                                title="Price per Night" step="0.10" value="{{room.price}}" disabled />
+                        </div>
+                        <div class="input-group w-50">
+                            <label class="input-group-text" for="beds">Beds</label>
+                            <input type="number" class="form-control" name="beds" id="beds" title="Number of beds"
+                                value="{{room.beds}}" min="1" max="5" disabled />
+                        </div>
+                    </div>
+
+                    <div class="row mt-3 mb-3">
+                        <div class="form-group">
+                            <input type="text" class="form-control mb-2" name="imageUrl" id="imageUrl"
+                                value="{{room.imageUrl}}" disabled />
+                            <input type="text" class="form-control mt-2" name="gallery" id="gallery"
+                                value="{{room.gallery}}" disabled />
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" name="description" rows="6" disabled>{{room.description}}</textarea>
+                    </div>
+
+                    <div class="text-center"><button type="submit">Delete</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

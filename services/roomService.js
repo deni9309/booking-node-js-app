@@ -1,3 +1,4 @@
+const { message } = require('../config/constants');
 const Room = require('../models/Room');
 
 function getAll(search, city, fromPrice, toPrice) {
@@ -38,7 +39,6 @@ async function isUserRoomOwner(roomId, userId) {
 
     if (!room) {
         return false;
-        // throw new Error('Unauthorized attempt to modify room resource!');
     }
 
     return true;
@@ -65,6 +65,14 @@ async function update(roomId, roomData) {
     return room;
 }
 
+async function deleteRoom(roomId) {
+
+    const room = await Room.findById(roomId);
+
+    room.deleteOne();
+}
+
+
 module.exports = {
     getAll,
     getById,
@@ -72,6 +80,7 @@ module.exports = {
     create,
     update,
     isUserRoomOwner,
+    deleteRoom,
 };
 
 /*function generateId() {
