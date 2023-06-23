@@ -11,7 +11,7 @@ function hasUser() {
 function isGuest() {
     return (req, res, next) => {
         if (req.user != undefined) {
-            res.redirect('/');
+          res.redirect('/');
         } else {
             next();
         }
@@ -28,8 +28,17 @@ function hasRole(role) {
     };
 }
 
+function isAuth(req, res, next)  {
+    if (!req.user) {
+        return res.redirect('/auth/login');
+    }
+
+    next();
+};
+
 module.exports = {
     hasUser,
     isGuest,
     hasRole,
+    isAuth,
 };

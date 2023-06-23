@@ -1,10 +1,19 @@
-const { getByIdWithFacilities, update } = require('../services/roomService');
-
 const router = require('express').Router();
 
-router.get('/:id/edit', async (req, res) => {
+const { isAuth } = require('../middlewares/guards');
+const { getByIdWithFacilities, update, isUserRoomOwner } = require('../services/roomService');
+
+router.get('/:id/edit', isAuth, async (req, res) => {
     try {
         const room = await getByIdWithFacilities(req.params.id);
+
+        if (!(await isUserRoomOwner(room._id, req.user._id))) {
+            console.log('Unauthorized attempt to modify room resource!');
+
+            return res.status(403).render('404', {
+                error: 'Error 403 - Unauthorized attempt to modify room resource!'
+            });
+        }
 
         res.render('edit', {
             title: 'Edit Accommodation',
@@ -16,9 +25,18 @@ router.get('/:id/edit', async (req, res) => {
     }
 });
 
-router.post('/:id/edit', async (req, res) => {
+router.post('/:id/edit', isAuth, async (req, res) => {
     const roomId = req.params.id;
+
     try {
+        if (!(await isUserRoomOwner(roomId, req.user._id))) {
+            console.log('Unauthorized attempt to modify room resource!');
+
+            return res.status(403).render('404', {
+                error: 'Error 403 - Unauthorized attempt to modify room resource!'
+            });
+        }
+
         const result = await update(roomId, req.body);
 
         res.redirect('/catalog/' + result._id);

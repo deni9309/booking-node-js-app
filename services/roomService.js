@@ -33,6 +33,17 @@ async function create(roomData, ownerId) {
     return result;
 }
 
+async function isUserRoomOwner(roomId, userId) {
+    const room = await Room.findOne({ $and: [{ _id: roomId }, { owner: userId }] });
+
+    if (!room) {
+        return false;
+        // throw new Error('Unauthorized attempt to modify room resource!');
+    }
+
+    return true;
+}
+
 async function update(roomId, roomData) {
     const missingFields = Object.entries(roomData).filter(([k, v]) => !v);
     if (missingFields.length > 0) {
@@ -60,6 +71,7 @@ module.exports = {
     getByIdWithFacilities,
     create,
     update,
+    isUserRoomOwner,
 };
 
 /*function generateId() {

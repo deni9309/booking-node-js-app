@@ -1,17 +1,18 @@
 const router = require('express').Router();
 
+const { isAuth } = require('../middlewares/guards');
 const { createFacility, getAllFacilities, updateRoomFacilityRelation } = require('../services/facilityService');
 const { getById } = require('../services/roomService');
 const { getCheckedFacilitiesForRoomViewData } = require('../viewHelpers/viewHelpers');
 
-router.get('/create', (req, res) => {
+router.get('/create', isAuth, (req, res) => {
 
     res.render('createFacility', {
         title: 'Create New Facility',
     });
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', isAuth, async (req, res) => {
     const { label, iconUrl } = req.body;
 
     try {
@@ -27,7 +28,7 @@ router.post('/create', async (req, res) => {
     }
 });
 
-router.get('/:roomId/decorate-room', async (req, res) => {
+router.get('/:roomId/decorate-room', isAuth, async (req, res) => {
     const roomId = req.params.roomId;
     const room = await getById(roomId);
 
@@ -47,7 +48,7 @@ router.get('/:roomId/decorate-room', async (req, res) => {
     }
 });
 
-router.post('/:roomId/decorate-room', async (req, res) => {
+router.post('/:roomId/decorate-room', isAuth, async (req, res) => {
     try {
         const facilityIds = Object.keys(req.body);
         const roomId = req.params.roomId;

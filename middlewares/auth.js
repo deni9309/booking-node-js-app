@@ -10,7 +10,7 @@ module.exports = (secret) => (req, res, next) => {
         } catch (err) {
             res.clearCookie('jwt'); //res.cookie('jwt', '', { maxAge: 0 });
             
-            return res.redirect('/login');
+            return res.redirect('/auth/login');
         }
     }
 

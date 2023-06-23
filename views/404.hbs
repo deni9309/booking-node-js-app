@@ -1,3 +1,7 @@
-<h1 class="text-danger text-center"><i class="bx bx-confused"></i></h1>
-<h2 class="text-black text-center">Ooops, error 404</h2>
-<h3 class="text-black-50 text-center">The page you are looking for doesn't exist!</h3>
+<h1 class="text-danger text-center"><i class="bx pt-5 display-2 bx-confused"></i></h1>
+{{#if error}}
+    <p class="display-6 pt-5 pb-5 text-danger text-center">{{error}}</p>
+{{else}}
+    <h2 class="text-black text-center">Ooops, error 404</h2>
+    <h3 class="text-black-50 text-center">The page you are looking for doesn't exist!</h3>
+{{/if}}
