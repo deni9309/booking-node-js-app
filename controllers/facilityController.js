@@ -1,32 +1,44 @@
 const router = require('express').Router();
+const { body, validationResult } = require('express-validator');
 
-const { isAuth } = require('../middlewares/guards');
+const { isAuth, hasRole } = require('../middlewares/guards');
 const { createFacility, getAllFacilities, updateRoomFacilityRelation } = require('../services/facilityService');
 const { getById } = require('../services/roomService');
+const { extractErrors } = require('../utils/errorHelpers');
 const { getCheckedFacilitiesForRoomViewData } = require('../viewHelpers/viewHelpers');
 
-router.get('/create', isAuth, (req, res) => {
+router.get('/create', hasRole('admin'), (req, res) => {
 
     res.render('createFacility', {
         title: 'Create New Facility',
     });
 });
 
-router.post('/create', isAuth, async (req, res) => {
-    const { label, iconUrl } = req.body;
+router.post('/create', hasRole('admin'),
+    body('label')
+        .trim()
+        .notEmpty().withMessage('Label is required'),
+    body('iconUrl').trim(),
+    async (req, res) => {
+        const { label, iconUrl } = req.body;
+        const { errors } = validationResult(req);
 
-    try {
-        await createFacility(label, iconUrl);
+        try {
+            if (errors.length > 0) {
+                throw errors;
+            }
 
-        res.redirect('/catalog');
-    } catch (err) {
-        console.log(err.message);
-        res.render('createFacility', {
-            title: 'Create New Facility',
-            error: err.message.split('\n'),
-        });
-    }
-});
+            await createFacility(label, iconUrl);
+
+            res.redirect('/catalog');
+        } catch (error) {
+            res.render('createFacility', {
+                title: 'Create New Facility',
+                error: extractErrors(error),
+                ...req.body
+            });
+        }
+    });
 
 router.get('/:roomId/decorate-room', isAuth, async (req, res) => {
     const roomId = req.params.roomId;
@@ -36,7 +48,7 @@ router.get('/:roomId/decorate-room', isAuth, async (req, res) => {
         const allFacilities = await getAllFacilities();
 
         const facilities = getCheckedFacilitiesForRoomViewData(room.facilities, allFacilities);
-   
+
         res.render('decorateRoom', {
             title: 'Decorate Room',
             facilities,

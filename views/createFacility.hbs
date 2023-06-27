@@ -10,7 +10,7 @@
                 <form action="/facility/create" name="submitForm" method="post" class="create-form">
                     <div class="my-3">
                         {{#if error}}
-                            {{#each error}}
+                            {{#each error.messages}}
                                 <div class="error-message">{{this}}</div>
                             {{/each}}
                         {{/if}}
@@ -18,13 +18,13 @@
                     <div class="row mt-3 mb-3 form-group">
                         <div class="input-group mb-1">
                             <label class="input-group-text col-md-2 col-lg-2 col-sm-auto" for="label">Label</label>
-                            <input type="text" name="label" class="form-control" id="label" placeholder="Facility Label"
-                                 />
+                            <input type="text" name="label" id="label" value="{{label}}" placeholder="Facility Label"
+                                class="form-control {{#if error.fields.label}}border-danger{{/if}}" />
                         </div>
                         <div class="input-group mt-1">
                             <label class="input-group-text col-md-2 col-lg-2 col-sm-auto" for="iconUrl">Icon Url</label>
-                            <input type="text" class="form-control" name="iconUrl" id="iconUrl"
-                                placeholder="Icon Url (optional)">
+                            <input type="text" name="iconUrl" id="iconUrl" value="{{iconUrl}}" placeholder="Icon Url (optional)" 
+                                class="form-control {{#if error.fields.iconUrl}}border-danger{{/if}}" />
                         </div>
                     </div>
                     <div class="text-center"><button type="submit">Save</button></div>

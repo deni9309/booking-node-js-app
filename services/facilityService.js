@@ -6,15 +6,15 @@ async function getAllFacilities() {
 }
 
 async function createFacility(label, iconUrl) {
-    let hasError;
-    if (!label) {
-        hasError = true;
-        throw new Error(`Label field is required!`);
-    }
+    // let hasError;
+    // if (!label) {
+    //     hasError = true;
+    //     throw new Error(`Label field is required!`);
+    // }
 
-    if (!iconUrl) {
-        iconUrl = iconUrl.default;
-    }
+    // if (!iconUrl) {
+    //     iconUrl = iconUrl.default;
+    // }
 
     const result = await Facility.create({ label, iconUrl });
     return result;

@@ -10,7 +10,7 @@
                 <form action="/auth/login" method="post" name="submitForm" class="create-form">
                     <div class="my-3">
                         {{#if error}}
-                            {{#each error}}
+                            {{#each error.messages}}
                                 <div class="error-message">{{this}}</div>
                             {{/each}}
                         {{/if}}
@@ -19,17 +19,36 @@
                     <div class="row m-auto col-lg-8 col-auto mt-3 mb-3 form-group">
                         <div class="input-group mt-2 mb-2">
                             <label class="input-group-text col-md-2 col-lg-2 col-sm-3" for="username">Username</label>
-                            <input type="text" name="username" class="form-control" id="username"
-                                placeholder="Username goes here" />
+                            <input type="text" name="username" id="username" placeholder="Username goes here"
+                                value="{{username}}" class="form-control 
+                                {{#if error}}
+                                    {{#unless error.fields.password}}
+                                         border-danger
+                                    {{/unless}}
+                                {{/if}}
+                                {{#if error.fields.username}}
+                                    border-danger
+                                {{/if}}" 
+                            />
                         </div>
                         <div class="input-group mt-2 mb-2">
                             <label class="input-group-text col-md-2 col-lg-2 col-sm-3" for="password">Password</label>
-                            <input type="password" class="form-control" name="password" id="password"
-                                placeholder="* * * * *" />
+                            <input type="password" name="password" id="password" placeholder="* * * * *"
+                                class="form-control 
+                                {{#if error}}
+                                    {{#unless error.fields.username}}
+                                         border-danger
+                                    {{/unless}}
+                                {{/if}}
+                                {{#if error.fields.password}}
+                                    border-danger
+                                {{/if}}"
+                             />
                         </div>
                         <div class="input-group mt-2 mb-2">
                             <p class="pe-2 ps-2 text-black-50">Don't have an account yet? <a href="/auth/register"
-                                    class="d-inline pe-2 ps-2 nav-link rounded-1 bg-warning text-secondary bg-opacity-25">Click here</a></p>
+                                    class="d-inline pe-2 ps-2 nav-link rounded-1 bg-warning text-secondary bg-opacity-25">Click
+                                    here</a></p>
                         </div>
                     </div>
 

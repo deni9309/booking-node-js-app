@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
     const toPrice = Number(req.query.toPrice) || 1000;
     try {
         const rooms = await getAll(search, city, fromPrice, toPrice);
-
         res.render('catalog', {
             title: 'All Accommodation',
             rooms,
